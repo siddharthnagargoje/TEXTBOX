@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="textbox.css">
+	<title>TEXT BOX</title>
+</head>
+<body>
+	<h1 align="center" class="heading"> TEXT BOX</h1>
+	<div class="container" align="center"></div>
+	<div class="Textboxform">
+		<form class="Textboxform">
+			<label>Enter the text below</label>
+			<br><br>
+			<textarea id="texts" rows="10" cols="70" autofocus></textarea>
+			<br><br>
+			<button type="button" onclick="transformUpperCase()">UPPERCASE</button>
+			<button type="button" onclick="transformLowerCase()">LOWERCASE</button>
+			<button type="button" onclick="findText()">FIND</button>
+			<button type="button" onclick="changeColor()">CHANGECOLOUR</button>
+			<button type="button" onclick="textunderline()">UNDERLINE</button>
+			<br><br>
+			<h2 id="textinfo"> This Text Contains 0 words and 0 charecters</h2>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		let text = 	document.getElementById("texts");
+		console.log(text);
+		let textInfo = document.getElementById("textinfo");
+		let clr;
+
+		function transformUpperCase(){
+			text.value = text.value.toUpperCase();
+		}
+
+		function transformLowerCase() {
+			text.value = text.value.toLowerCase();
+
+		}
+		function findText() {
+			// body...
+			let searchText = prompt("enter the text");
+			if (text.value.includes(searchText)) {
+				alert(`search Text "${searchText}" is present`);
+
+			} else {
+				alert(`search Text "${searchText}" is not present`);
+			};
+		}
+
+
+
+		function changeColor() {
+			// body...
+			clr  = prompt(("Enter your fav color :").toLowerCase());
+			text.style.color = clr;
+
+		}
+		function textunderline() {
+			text.style.textDecoration = `underline 2px solid ${clr}`;
+		}
+
+
+		function updateInfo() {
+			let  numberofwords = text.value.trim().split(" ").length
+			textinfo.innerHTML = `This text.contains${numberofwords} words and${text.value.length}charecters`
+
+		
+		}
+
+
+	</script>
+
+</body>
+</html>
